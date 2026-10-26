@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bevelcore.github.io/sitemap.xml
