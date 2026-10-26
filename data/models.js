@@ -26,6 +26,20 @@
    ========================================================= */
 window.MODELS = [
   {
+    id: "snowman-4-phases-pack",
+    category: "asset-packs",
+    name: { en: "Snowman 4 Phases Pack — Cute to Creepy", ro: "Pachet Om de Zăpadă în 4 faze — de la drăguț la înfricoșător" },
+    description: {
+      en: "Four snowman variants that evolve from a classic cheerful snowman into a cracked, glowing-eyed horror creature with ice fangs and spikes. Perfect for winter, Christmas and horror games, boss evolutions, trailers and seasonal events. Each phase is a separate, cleanly named object set with a pivoted head ready to animate.",
+      ro: "Patru variante de om de zăpadă care evoluează de la clasicul om de zăpadă vesel la o creatură horror cu fisuri, ochi luminoși, colți și țepi de gheață. Perfect pentru jocuri de iarnă, Crăciun și horror, evoluții de boss, trailere și evenimente sezoniere. Fiecare fază e un set separat de obiecte, denumite clar, cu capul pe pivot, gata de animat."
+    },
+    price: 15, buyUrl: "",
+    images: ["cover.webp", "scene.webp", "alt.webp"],
+    tris: 51022, formats: ["GLB", "FBX", "OBJ", "BLEND"],
+    tags: ["snowman", "winter", "christmas", "horror", "creepy", "evolution", "asset pack", "stylized", "om de zapada"],
+    featured: true, isNew: true
+  },
+  {
     id: "royal-crown-ugc",
     category: "roblox-ugc",
     name: { en: "Royal Jewel Crown", ro: "Coroană regală cu pietre" },
