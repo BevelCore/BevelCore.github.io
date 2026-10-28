@@ -208,14 +208,29 @@
     mv.poster = file(m, im[0]);
     mv.alt = `${loc(m.name)} — interactive 3D model`;
     mv.src = file(m, m.model || "model.glb");
-    $("#mThumbs").innerHTML = `<button class="thumb" type="button" data-media="3d" aria-selected="true" aria-label="3D"><svg><use href="#i-cube"/></svg></button>` +
+    const views = (m.views || []).filter(v => v && v.file);
+    const viewBtn = (key, label) => `<button class="thumb thumb--3d" type="button" data-media="${key}" aria-selected="false" aria-label="3D ${esc(label)}"><svg><use href="#i-cube"/></svg>${views.length ? `<small>${esc(label)}</small>` : ""}</button>`;
+    $("#mThumbs").innerHTML = viewBtn("3d", views.length ? (state.lang === "ro" ? "Exterior" : "Exterior") : "3D") +
+      views.map((v, i) => viewBtn("3d-" + i, loc(v.label) || v.file)).join("") +
       im.map((f, i) => `<button class="thumb" type="button" data-media="${i}" aria-selected="false" aria-label="Image ${i + 1}" style="background-image:url('${file(m, f)}')"></button>`).join("");
     showMedia("3d");
   }
   function showMedia(which) {
     const m = state.current; if (!m) return;
     const img = $("#mImage");
-    if (which === "3d") { mv.style.visibility = "visible"; img.hidden = true; }
+    if (String(which).startsWith("3d")) {
+      const v = which === "3d" ? null : (m.views || [])[+String(which).slice(3)];
+      const src = file(m, v ? v.file : (m.model || "model.glb"));
+      if (!mv.src || !mv.src.endsWith(src)) {
+        const orbit = (v && v.orbit) || m.orbit || "0deg 75deg 105%";
+        mv.addEventListener("load", () => {
+          mv.cameraOrbit = orbit; mv.cameraTarget = "auto auto auto";
+          if (mv.jumpCameraToGoal) mv.jumpCameraToGoal();
+        }, { once: true });
+        mv.src = src;
+      }
+      mv.style.visibility = "visible"; img.hidden = true;
+    }
     else { mv.style.visibility = "hidden"; img.hidden = false; img.src = file(m, imgs(m)[+which]); img.alt = loc(m.name); }
     $$("#mThumbs .thumb").forEach(b => b.setAttribute("aria-selected", b.dataset.media === String(which)));
   }

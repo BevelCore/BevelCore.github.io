@@ -21,10 +21,27 @@
      tris        – număr de triunghiuri (opțional)
      formats     – formate livrate
      tags        – cuvinte cheie pentru căutare și SEO
+     views       – (opțional) alte fișiere 3D din folder, ex: [{ file: "interior.glb", label: { en: "Interior", ro: "Interior" }, orbit: "25deg 35deg 95%" }]
+     orbit       – (opțional) unghiul inițial al camerei 3D, ex: "30deg 70deg auto"
      featured    – true = apare în secțiunea de sus (hero)
      isNew       – true = afișează eticheta „NEW”
    ========================================================= */
 window.MODELS = [
+  {
+    id: "cozy-winter-cabin",
+    category: "stylized",
+    name: { en: "Cozy Winter Log Cabin — Full Interior", ro: "Cabană de iarnă din bușteni — cu interior complet" },
+    description: {
+      en: "Snowy log cabin with a fully furnished interior: living room with stone fireplace and Christmas tree, kitchen with dining table, three bedrooms, bathroom and a cellar hatch. Front porch with string lights, wreath and icicles, snow-covered roof and stone chimney. Every room is lit and modeled, so the camera can go inside — great for cozy, Christmas, survival and horror games. Use the 'Interior' 3D view to look inside without the roof.",
+      ro: "Cabană din bușteni acoperită de zăpadă, cu interior complet mobilat: living cu șemineu din piatră și brad de Crăciun, bucătărie cu masă, trei dormitoare, baie și trapă de pivniță. Verandă cu instalație de lumini, coroniță și țurțuri, acoperiș cu zăpadă și horn din piatră. Fiecare cameră e modelată și luminată, deci camera poate intra în casă — perfectă pentru jocuri cozy, de Crăciun, survival și horror. Folosește vederea 3D „Interior” ca să vezi înăuntru fără acoperiș."
+    },
+    price: 10, buyUrl: "",
+    images: ["exterior.webp", "cutaway-front.webp", "interior-living.webp", "interior-kitchen.webp", "interior-bedroom.webp", "veranda.webp", "cutaway-back.webp"],
+    views: [ { file: "interior.glb", label: { en: "Interior", ro: "Interior" }, orbit: "25deg 35deg 95%" } ],
+    tris: 52440, formats: ["GLB", "FBX", "OBJ", "BLEND"],
+    tags: ["cabin", "log cabin", "house", "interior", "winter", "christmas", "snow", "furniture", "environment", "cabana"],
+    featured: true, isNew: true
+  },
   {
     id: "snowman-4-phases-pack",
     category: "asset-packs",
